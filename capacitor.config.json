@@ -1,0 +1,9 @@
+{
+  "appId": "com.crispstrobe.turbowarp",
+  "appName": "TurboWarp",
+  "webDir": "../scratch-gui/build",
+  "server": {
+    "androidScheme": "https",
+    "hostname": "localhost"
+  }
+}

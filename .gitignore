@@ -1,0 +1,25 @@
+# Node
+node_modules/
+dist/
+npm-debug.log
+
+# macOS
+.DS_Store
+
+# Android/Gradle
+.gradle/
+build/
+app/build/
+local.properties
+*.iml
+.idea/
+.navigation/
+captures/
+
+# Keystores (NEVER upload these to GitHub)
+*.jks
+*.keystore
+key.properties
+
+# Capacitor
+capacitor.config.json.timestamp
