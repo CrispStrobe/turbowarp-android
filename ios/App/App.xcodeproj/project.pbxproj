@@ -17,6 +17,19 @@
 		504EC30F1FED79650016851F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 504EC30E1FED79650016851F /* Assets.xcassets */; };
 		504EC3121FED79650016851F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 504EC3101FED79650016851F /* LaunchScreen.storyboard */; };
 		50B271D11FEDC1A000F3C39B /* public in Resources */ = {isa = PBXBuildFile; fileRef = 50B271D01FEDC1A000F3C39B /* public */; };
+		AA00000100000000000000F2 /* inject-scratch-link.js in Resources */ = {isa = PBXBuildFile; fileRef = AA00000100000000000000F1 /* inject-scratch-link.js */; };
+		AA00000200000000000000F2 /* JSONRPCError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000200000000000000F1 /* JSONRPCError.swift */; };
+		AA00000300000000000000F2 /* RSSI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000300000000000000F1 /* RSSI.swift */; };
+		AA00000400000000000000F2 /* EncodingHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000400000000000000F1 /* EncodingHelpers.swift */; };
+		AA00000500000000000000F2 /* GATTHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000500000000000000F1 /* GATTHelpers.swift */; };
+		AA00000600000000000000F2 /* DispatchSemaphoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000600000000000000F1 /* DispatchSemaphoreExtension.swift */; };
+		AA00000700000000000000F2 /* ScratchWebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000700000000000000F1 /* ScratchWebSocket.swift */; };
+		AA00000800000000000000F2 /* ScratchLinkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000800000000000000F1 /* ScratchLinkSession.swift */; };
+		AA00000900000000000000F2 /* CBDelegateHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000900000000000000F1 /* CBDelegateHelpers.swift */; };
+		AA00000A00000000000000F2 /* BLESession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000A00000000000000F1 /* BLESession.swift */; };
+		AA00000B00000000000000F2 /* BTSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000B00000000000000F1 /* BTSession.swift */; };
+		AA00000C00000000000000F2 /* ScratchLinkPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000C00000000000000F1 /* ScratchLinkPlugin.swift */; };
+		AA00000D00000000000000F2 /* ScratchLinkPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00000D00000000000000F1 /* ScratchLinkPlugin.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +45,19 @@
 		504EC3131FED79650016851F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50B271D01FEDC1A000F3C39B /* public */ = {isa = PBXFileReference; lastKnownFileType = folder; path = public; sourceTree = "<group>"; };
 		958DCC722DB07C7200EA8C5F /* debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = debug.xcconfig; path = ../debug.xcconfig; sourceTree = SOURCE_ROOT; };
+		AA00000100000000000000F1 /* inject-scratch-link.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "inject-scratch-link.js"; sourceTree = "<group>"; };
+		AA00000200000000000000F1 /* JSONRPCError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONRPCError.swift; sourceTree = "<group>"; };
+		AA00000300000000000000F1 /* RSSI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSI.swift; sourceTree = "<group>"; };
+		AA00000400000000000000F1 /* EncodingHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodingHelpers.swift; sourceTree = "<group>"; };
+		AA00000500000000000000F1 /* GATTHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GATTHelpers.swift; sourceTree = "<group>"; };
+		AA00000600000000000000F1 /* DispatchSemaphoreExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchSemaphoreExtension.swift; sourceTree = "<group>"; };
+		AA00000700000000000000F1 /* ScratchWebSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScratchWebSocket.swift; sourceTree = "<group>"; };
+		AA00000800000000000000F1 /* ScratchLinkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScratchLinkSession.swift; sourceTree = "<group>"; };
+		AA00000900000000000000F1 /* CBDelegateHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBDelegateHelpers.swift; sourceTree = "<group>"; };
+		AA00000A00000000000000F1 /* BLESession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLESession.swift; sourceTree = "<group>"; };
+		AA00000B00000000000000F1 /* BTSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTSession.swift; sourceTree = "<group>"; };
+		AA00000C00000000000000F1 /* ScratchLinkPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScratchLinkPlugin.swift; sourceTree = "<group>"; };
+		AA00000D00000000000000F1 /* ScratchLinkPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScratchLinkPlugin.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +96,7 @@
 				504EC3071FED79650016851F /* AppDelegate.swift */,
 				BB001111CCDD2222EEFF3300 /* FileSavePlugin.swift */,
 				BB001111CCDD2222EEFF3333 /* FileSavePlugin.m */,
+				AA00AA00BB00BB00CC00CC00 /* ScratchLink */,
 				504EC30B1FED79650016851F /* Main.storyboard */,
 				504EC30E1FED79650016851F /* Assets.xcassets */,
 				504EC3101FED79650016851F /* LaunchScreen.storyboard */,
@@ -78,6 +105,26 @@
 				50B271D01FEDC1A000F3C39B /* public */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		AA00AA00BB00BB00CC00CC00 /* ScratchLink */ = {
+			isa = PBXGroup;
+			children = (
+				AA00000100000000000000F1 /* inject-scratch-link.js */,
+				AA00000200000000000000F1 /* JSONRPCError.swift */,
+				AA00000300000000000000F1 /* RSSI.swift */,
+				AA00000400000000000000F1 /* EncodingHelpers.swift */,
+				AA00000500000000000000F1 /* GATTHelpers.swift */,
+				AA00000600000000000000F1 /* DispatchSemaphoreExtension.swift */,
+				AA00000700000000000000F1 /* ScratchWebSocket.swift */,
+				AA00000800000000000000F1 /* ScratchLinkSession.swift */,
+				AA00000900000000000000F1 /* CBDelegateHelpers.swift */,
+				AA00000A00000000000000F1 /* BLESession.swift */,
+				AA00000B00000000000000F1 /* BTSession.swift */,
+				AA00000C00000000000000F1 /* ScratchLinkPlugin.swift */,
+				AA00000D00000000000000F1 /* ScratchLinkPlugin.m */,
+			);
+			path = ScratchLink;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +198,7 @@
 				50379B232058CBB4000EE86E /* capacitor.config.json in Resources */,
 				504EC30D1FED79650016851F /* Main.storyboard in Resources */,
 				2FAD9763203C412B000D30F8 /* config.xml in Resources */,
+				AA00000100000000000000F2 /* inject-scratch-link.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +212,18 @@
 				504EC3081FED79650016851F /* AppDelegate.swift in Sources */,
 				BB001111CCDD2222EEFF3311 /* FileSavePlugin.swift in Sources */,
 				BB001111CCDD2222EEFF3322 /* FileSavePlugin.m in Sources */,
+				AA00000200000000000000F2 /* JSONRPCError.swift in Sources */,
+				AA00000300000000000000F2 /* RSSI.swift in Sources */,
+				AA00000400000000000000F2 /* EncodingHelpers.swift in Sources */,
+				AA00000500000000000000F2 /* GATTHelpers.swift in Sources */,
+				AA00000600000000000000F2 /* DispatchSemaphoreExtension.swift in Sources */,
+				AA00000700000000000000F2 /* ScratchWebSocket.swift in Sources */,
+				AA00000800000000000000F2 /* ScratchLinkSession.swift in Sources */,
+				AA00000900000000000000F2 /* CBDelegateHelpers.swift in Sources */,
+				AA00000A00000000000000F2 /* BLESession.swift in Sources */,
+				AA00000B00000000000000F2 /* BTSession.swift in Sources */,
+				AA00000C00000000000000F2 /* ScratchLinkPlugin.swift in Sources */,
+				AA00000D00000000000000F2 /* ScratchLinkPlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
