@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
-#import <Capacitor/Capacitor.h>
+// Use @import for Swift Package Manager compatibility (capacitor-swift-pm)
+@import Capacitor;
 
 // Registers the Swift FileSavePlugin with Capacitor's Objective-C bridge
 // so it is exposed as window.Capacitor.Plugins.FileSave in the WebView.
