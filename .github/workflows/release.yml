@@ -1,0 +1,170 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+      - '[0-9]*'
+
+permissions:
+  contents: write
+
+jobs:
+  build-android:
+    name: Android (.apk)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout turbowarp-android
+        uses: actions/checkout@v4
+        with:
+          path: turbowarp-android
+
+      - name: Checkout sibling scratch-gui
+        uses: actions/checkout@v4
+        with:
+          repository: CrispStrobe/scratch-gui
+          ref: develop
+          path: scratch-gui
+
+      - name: Checkout sibling extensions
+        uses: actions/checkout@v4
+        with:
+          repository: CrispStrobe/extensions
+          ref: main
+          path: extensions
+
+      - name: Setup Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Setup Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install scratch-gui deps
+        working-directory: scratch-gui
+        run: |
+          npm install --ignore-scripts --no-audit --no-fund
+          mkdir -p src/generated
+          printf "module.exports = '';\n" > src/generated/microbit-hex-url.cjs
+
+      - name: Build scratch-gui
+        working-directory: scratch-gui
+        env:
+          NODE_ENV: production
+          CI: "true"
+          NODE_OPTIONS: --max-old-space-size=8192
+        run: ./node_modules/.bin/webpack --bail
+
+      - name: Install turbowarp-android deps
+        working-directory: turbowarp-android
+        run: npm install --no-audit --no-fund
+
+      - name: Capacitor sync (android)
+        working-directory: turbowarp-android
+        run: npx cap sync android
+
+      - name: Build APK
+        working-directory: turbowarp-android/android
+        run: ./gradlew assembleRelease --no-daemon
+
+      - name: Stage APK with versioned name
+        run: |
+          cp turbowarp-android/android/app/build/outputs/apk/release/app-release-unsigned.apk \
+             "turbowarp-android-${{ github.ref_name }}-unsigned.apk"
+
+      - name: Attach APK to Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: turbowarp-android-${{ github.ref_name }}-unsigned.apk
+          draft: false
+          prerelease: true
+          generate_release_notes: true
+
+  build-ios:
+    name: iOS (.ipa)
+    runs-on: macos-latest
+    steps:
+      - name: Checkout turbowarp-android
+        uses: actions/checkout@v4
+        with:
+          path: turbowarp-android
+
+      - name: Checkout sibling scratch-gui
+        uses: actions/checkout@v4
+        with:
+          repository: CrispStrobe/scratch-gui
+          ref: develop
+          path: scratch-gui
+
+      - name: Checkout sibling extensions
+        uses: actions/checkout@v4
+        with:
+          repository: CrispStrobe/extensions
+          ref: main
+          path: extensions
+
+      - name: Setup Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install scratch-gui deps
+        working-directory: scratch-gui
+        run: |
+          npm install --ignore-scripts --no-audit --no-fund
+          mkdir -p src/generated
+          printf "module.exports = '';\n" > src/generated/microbit-hex-url.cjs
+
+      - name: Build scratch-gui
+        working-directory: scratch-gui
+        env:
+          NODE_ENV: production
+          CI: "true"
+          NODE_OPTIONS: --max-old-space-size=8192
+        run: ./node_modules/.bin/webpack --bail
+
+      - name: Install turbowarp-android deps
+        working-directory: turbowarp-android
+        run: npm install --no-audit --no-fund
+
+      - name: Capacitor sync (ios)
+        working-directory: turbowarp-android
+        run: npx cap sync ios
+
+      - name: Build iOS app (unsigned, device SDK)
+        working-directory: turbowarp-android/ios/App
+        run: |
+          xcodebuild \
+            -project App.xcodeproj \
+            -target App \
+            -configuration Release \
+            -sdk iphoneos \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO \
+            SYMROOT="$PWD/build" \
+            OBJROOT="$PWD/build/intermediates" \
+            build
+
+      - name: Wrap App.app into versioned unsigned .ipa
+        working-directory: turbowarp-android/ios/App/build/Release-iphoneos
+        run: |
+          mkdir -p Payload
+          cp -R App.app Payload/
+          zip -qr "../../../../turbowarp-android-ios-${{ github.ref_name }}-unsigned.ipa" Payload
+          ls -lh "../../../../turbowarp-android-ios-${{ github.ref_name }}-unsigned.ipa"
+
+      - name: Attach .ipa to Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: turbowarp-android-ios-${{ github.ref_name }}-unsigned.ipa
+          draft: false
+          prerelease: true
+          generate_release_notes: true
